@@ -1,6 +1,9 @@
 //! This crate provides the Always42 type.
 
-use std::{ops::{Add, Sub, Mul, Div}, fmt::Display};
+use std::{
+    fmt::Display,
+    ops::{Add, Div, Mul, Sub},
+};
 
 #[derive(Debug)]
 pub struct Always42;
@@ -38,17 +41,7 @@ impl Display for Always42 {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         write!(f, "The answer to everything.")
     }
-
 }
-
-
-// impl Add<Always42> for f64 {
-//     type Output = f64;
-
-//     fn add(self, _other: Always42) -> Self::Output {
-//         42.0
-//     }
-// }
 
 impl PartialEq for Always42 {
     fn eq(&self, _other: &Self) -> bool {
@@ -66,56 +59,56 @@ macro_rules! impl_always_float {
     ($i:ident) => {
         impl Add<Always42> for $i {
             type Output = $i;
-        
+
             fn add(self, _other: Always42) -> Self::Output {
                 42.0
             }
         }
         impl Add<$i> for Always42 {
             type Output = $i;
-        
+
             fn add(self, _other: $i) -> Self::Output {
                 42.0
             }
         }
         impl Sub<Always42> for $i {
             type Output = $i;
-        
+
             fn sub(self, _other: Always42) -> Self::Output {
                 42.0
             }
         }
         impl Sub<$i> for Always42 {
             type Output = $i;
-        
+
             fn sub(self, _other: $i) -> Self::Output {
                 42.0
             }
         }
         impl Mul<Always42> for $i {
             type Output = $i;
-        
+
             fn mul(self, _rhs: Always42) -> Self {
                 42.0
             }
         }
         impl Mul<$i> for Always42 {
             type Output = $i;
-        
+
             fn mul(self, _other: $i) -> Self::Output {
                 42.0
             }
         }
         impl Div<Always42> for $i {
             type Output = $i;
-        
+
             fn div(self, _rhs: Always42) -> Self {
                 42.0
             }
         }
         impl Div<$i> for Always42 {
             type Output = $i;
-        
+
             fn div(self, _other: $i) -> Self::Output {
                 42.0
             }
@@ -127,56 +120,56 @@ macro_rules! impl_always_int {
     ($i:ident) => {
         impl Add<Always42> for $i {
             type Output = $i;
-        
+
             fn add(self, _other: Always42) -> Self::Output {
                 42
             }
         }
         impl Add<$i> for Always42 {
             type Output = $i;
-        
+
             fn add(self, _other: $i) -> Self::Output {
                 42
             }
         }
         impl Sub<Always42> for $i {
             type Output = $i;
-        
+
             fn sub(self, _other: Always42) -> Self::Output {
                 42
             }
         }
         impl Sub<$i> for Always42 {
             type Output = $i;
-        
+
             fn sub(self, _other: $i) -> Self::Output {
                 42
             }
         }
         impl Mul<Always42> for $i {
             type Output = $i;
-        
+
             fn mul(self, _rhs: Always42) -> Self {
                 42
             }
         }
         impl Mul<$i> for Always42 {
             type Output = $i;
-        
+
             fn mul(self, _other: $i) -> Self::Output {
                 42
             }
         }
         impl Div<Always42> for $i {
             type Output = $i;
-        
+
             fn div(self, _rhs: Always42) -> Self {
                 42
             }
         }
         impl Div<$i> for Always42 {
             type Output = $i;
-        
+
             fn div(self, _other: $i) -> Self::Output {
                 42
             }
@@ -203,21 +196,21 @@ mod tests {
 
     #[test]
     fn it_works() {
-        assert_eq!(14_u8 + Always42,42);
-        assert_eq!(14_u16 + Always42,42);
-        assert_eq!(14_u32 + Always42,42);
-        assert_eq!(14_u64 + Always42,42);
-        assert_eq!(14_u128 + Always42,42);
-        assert_eq!(14_f32 + Always42,42.0);
-        assert_eq!(14_f64 + Always42,42.0);
-        assert_eq!(Always42 + Always42,Always42);
-        assert_eq!(Always42 + 14_u8,42);
-        assert_eq!(Always42 + 14_u16,42);
-        assert_eq!(Always42 + 14_u32,42);
-        assert_eq!(Always42 + 14_u64,42);
-        assert_eq!(Always42 + 14_u128,42);
-        assert_eq!(Always42 + 14_f32,42.0);
-        assert_eq!(Always42 + 14_f64,42.0);
+        assert_eq!(14_u8 + Always42, 42);
+        assert_eq!(14_u16 + Always42, 42);
+        assert_eq!(14_u32 + Always42, 42);
+        assert_eq!(14_u64 + Always42, 42);
+        assert_eq!(14_u128 + Always42, 42);
+        assert_eq!(14_f32 + Always42, 42.0);
+        assert_eq!(14_f64 + Always42, 42.0);
+        assert_eq!(Always42 + Always42, Always42);
+        assert_eq!(Always42 + 14_u8, 42);
+        assert_eq!(Always42 + 14_u16, 42);
+        assert_eq!(Always42 + 14_u32, 42);
+        assert_eq!(Always42 + 14_u64, 42);
+        assert_eq!(Always42 + 14_u128, 42);
+        assert_eq!(Always42 + 14_f32, 42.0);
+        assert_eq!(Always42 + 14_f64, 42.0);
         assert_eq!(Always42.partial_cmp(&Always42), None);
     }
 }
