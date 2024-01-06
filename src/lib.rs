@@ -203,8 +203,21 @@ mod tests {
 
     #[test]
     fn it_works() {
+        assert_eq!(14_u8 + Always42,42);
+        assert_eq!(14_u16 + Always42,42);
         assert_eq!(14_u32 + Always42,42);
+        assert_eq!(14_u64 + Always42,42);
+        assert_eq!(14_u128 + Always42,42);
+        assert_eq!(14_f32 + Always42,42.0);
+        assert_eq!(14_f64 + Always42,42.0);
         assert_eq!(Always42 + Always42,Always42);
+        assert_eq!(Always42 + 14_u8,42);
+        assert_eq!(Always42 + 14_u16,42);
         assert_eq!(Always42 + 14_u32,42);
+        assert_eq!(Always42 + 14_u64,42);
+        assert_eq!(Always42 + 14_u128,42);
+        assert_eq!(Always42 + 14_f32,42.0);
+        assert_eq!(Always42 + 14_f64,42.0);
+        assert_eq!(Always42.partial_cmp(&Always42), None);
     }
 }
