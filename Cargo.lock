@@ -4,4 +4,4 @@ version = 3
 
 [[package]]
 name = "always42"
-version = "42.1.2"
+version = "42.1.3"
