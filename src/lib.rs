@@ -3,7 +3,7 @@
 use std::{ops::{Add, Sub, Mul, Div}, fmt::Display};
 
 #[derive(Debug)]
-struct Always42;
+pub struct Always42;
 
 impl Add for Always42 {
     type Output = Always42;

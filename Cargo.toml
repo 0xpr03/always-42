@@ -1,6 +1,6 @@
 [package]
 name = "always42"
-version = "0.1.0"
+version = "42.1.1"
 edition = "2021"
 description = "The always 42 type"
 license = "MIT OR Apache-2.0"
