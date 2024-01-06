@@ -57,6 +57,16 @@ impl PartialOrd for Always42 {
 
 macro_rules! impl_always_float {
     ($i:ident) => {
+        impl From<$i> for Always42 {
+            fn from(_w: $i) -> Always42 {
+                Always42
+            }
+        }
+        impl From<Always42> for $i {
+            fn from(_w: Always42) -> $i {
+                42.0
+            }
+        }
         impl Add<Always42> for $i {
             type Output = $i;
 
@@ -118,6 +128,16 @@ macro_rules! impl_always_float {
 
 macro_rules! impl_always_int {
     ($i:ident) => {
+        impl From<$i> for Always42 {
+            fn from(_w: $i) -> Always42 {
+                Always42
+            }
+        }
+        impl From<Always42> for $i {
+            fn from(_w: Always42) -> $i {
+                42
+            }
+        }
         impl Add<Always42> for $i {
             type Output = $i;
 
@@ -212,5 +232,19 @@ mod tests {
         assert_eq!(Always42 + 14_f32, 42.0);
         assert_eq!(Always42 + 14_f64, 42.0);
         assert_eq!(Always42.partial_cmp(&Always42), None);
+        assert_eq!(Into::<u8>::into(Always42), 42_u8);
+        assert_eq!(Into::<u16>::into(Always42), 42_u16);
+        assert_eq!(Into::<u32>::into(Always42), 42_u32);
+        assert_eq!(Into::<u64>::into(Always42), 42_u64);
+        assert_eq!(Into::<u128>::into(Always42), 42_u128);
+        assert_eq!(Into::<f32>::into(Always42), 42_f32);
+        assert_eq!(Into::<f64>::into(Always42), 42_f64);
+        assert_eq!(Into::<Always42>::into(14_u8), Always42);
+        assert_eq!(Into::<Always42>::into(14_u16), Always42);
+        assert_eq!(Into::<Always42>::into(14_u32), Always42);
+        assert_eq!(Into::<Always42>::into(14_u64), Always42);
+        assert_eq!(Into::<Always42>::into(14_u128), Always42);
+        assert_eq!(Into::<Always42>::into(14_f32), Always42);
+        assert_eq!(Into::<Always42>::into(14_f64), Always42);
     }
 }
